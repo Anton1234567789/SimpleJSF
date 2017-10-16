@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                template="WEB-INF/template.xhtml">
+    <ui:define name="page_title">
+        List products
+    </ui:define>
+
+    <ui:define name="page_body" >
+
+        <h:form>
+            <table>
+                <tr>
+                    <td>
+                        <h:outputText value="Id"/>
+                    </td>
+                    <td>
+                        <h:inputText value="#{productsListBean.newProduct.id}"/>
+                    </td>
+
+                    <td>
+                        <h:outputText value="Name"/>
+                    </td>
+                    <td>
+                        <h:inputText value="#{productsListBean.newProduct.name}"/>
+                    </td>
+
+                    <td>
+                        <h:outputText value="Price"/>
+                    </td>
+                    <td>
+                        <h:inputText value="#{productsListBean.newProduct.price}"/>
+                    </td>
+
+                <td>
+                    <p:commandButton value="Создать"
+                                     action="#{productsListBean.addNewProduct()}"
+                                     update="table"/>
+                </td>
+                </tr>
+            </table>
+        <p:dataTable value="#{productsListBean.products}" var="product" id="table">
+            <p:column>
+                <h:outputText value="#{product.id}"/>
+            </p:column>
+
+            <p:column>
+                <h:outputText value="#{product.name}"/>
+            </p:column>
+
+            <p:column>
+                <h:outputText value="#{product.price}"/>
+            </p:column>
+        </p:dataTable>
+
+        </h:form>
+
+    </ui:define>
+</ui:composition>
